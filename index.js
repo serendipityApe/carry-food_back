@@ -8,8 +8,8 @@ const jwt=require('koa-jwt')
 const db=require('./db/connect')
 let routerResponse =  require('./middleware/ResConfig')
 
-const Room =  require('./routers/roomRouter')
 const User =  require('./routers/userRouter')
+const Map =  require('./routers/mapRouter')
 const Utils = require('./routers/utilsRouter')
 app.use(bodyParser()); 
 app.use(cors({
@@ -69,6 +69,7 @@ app.use(
 
 app.use(User.routes()).use(User.allowedMethods())
 app.use(Utils.routes()).use(Utils.allowedMethods())
+app.use(Map.routes()).use(Map.allowedMethods())
 // app.use(User.routes())
 
 app.use(router.routes()); //作用：启动路由
